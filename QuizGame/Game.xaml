@@ -6,6 +6,6 @@
         mc:Ignorable="d"
         Title="Игра Пиктограммы | Игра" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <TextBlock x:Name="textBlock" />
     </Grid>
 </Window>

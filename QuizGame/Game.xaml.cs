@@ -22,15 +22,11 @@ namespace QuizGame
     /// </summary>
     public partial class Game : Window
     {
-        private TextBlock textBlock; // The TextBlock control that displays the text with images
         private Controller controller; // The Controller object
 
         public Game()
         {
             InitializeComponent();
-
-            // Initialize the TextBlock control
-            textBlock = new TextBlock();
 
             // Create an array of words
             string[] words = new string[] { "The", "cat", "is", "on", "the", "mat" };
@@ -46,6 +42,7 @@ namespace QuizGame
             View view = new View(textBlock);
             controller = new Controller(model, view);
         }
+
         public void AddImageToText(int index, string imagePath)
         {
             // Call the AddImageToText method on the Controller object
