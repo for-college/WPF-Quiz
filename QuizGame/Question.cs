@@ -8,19 +8,31 @@ namespace QuizGame
 {
     public class Question
     {
-        // На чешуе жестяной рыбы (картинка) прочёл я зовы новых губ (картинка).
-        public string QuestionText { get; set; }
-        public string QuestionAnswer { get; set; }
-        public bool isAnswered { get; set; }
-        
-        // public int countPictograms { get; set; }
-        // public int difficult { get; set; }
+        public string Text { get; set; }
+        public string Answer { get; set; }
+        public bool IsAnswered { get; set; }
 
-        public Question(string questionText, string questionAnswer)
+        public Question(string text, string answer)
         {
-            QuestionText = questionText;
-            QuestionAnswer = questionAnswer;
-            isAnswered = false;
+            Text = text;
+            Answer = answer;
+            IsAnswered = false;
+        }
+
+        public void MarkAsAnswered()
+        {
+            IsAnswered = true;
+        }
+
+        public void MarkAsUnanswered()
+        {
+            IsAnswered = false;
+        }
+
+        public bool GetIsAnswered()
+        {
+            return IsAnswered;
         }
     }
+
 }

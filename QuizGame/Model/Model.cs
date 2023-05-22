@@ -32,5 +32,16 @@ namespace QuizGame.ModelNamespace
 
             return Enumerable.Range(0, images.Length).OrderBy(i => random.Next(0, images.Length)).ToArray();
         }
+        public void AddWord(string word)
+        {
+            Array.Resize(ref words, words.Length + 1);
+            words[words.Length - 1] = word;
+        }
+
+        public void AddImage(Image image)
+        {
+            Array.Resize(ref images, images.Length + 1);
+            images[images.Length - 1] = image;
+        }
     }
 }
