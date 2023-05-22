@@ -1,4 +1,7 @@
-﻿using System;
+﻿using QuizGame.ControllerNamespace;
+using QuizGame.ModelNamespace;
+using QuizGame.ViewNamespace;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +22,34 @@ namespace QuizGame
     /// </summary>
     public partial class Game : Window
     {
+        private TextBlock textBlock; // The TextBlock control that displays the text with images
+        private Controller controller; // The Controller object
+
         public Game()
         {
             InitializeComponent();
+
+            // Initialize the TextBlock control
+            textBlock = new TextBlock();
+
+            // Create an array of words
+            string[] words = new string[] { "The", "cat", "is", "on", "the", "mat" };
+
+            // Create an array of images
+            Image[] images = new Image[3];
+            images[0] = new Image() { Source = new BitmapImage(new Uri("cat.png", UriKind.Relative)) };
+            images[1] = new Image() { Source = new BitmapImage(new Uri("dog.png", UriKind.Relative)) };
+            images[2] = new Image() { Source = new BitmapImage(new Uri("bird.png", UriKind.Relative)) };
+
+            // Create instances of the Model, View, and Controller classes
+            Model model = new Model(words, images);
+            View view = new View(textBlock);
+            controller = new Controller(model, view);
+        }
+        public void AddImageToText(int index, string imagePath)
+        {
+            // Call the AddImageToText method on the Controller object
+            controller.AddImageToText(index, imagePath);
         }
     }
 }
