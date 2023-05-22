@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace QuizGame
+﻿namespace QuizGame
 {
     public class Question
     {
-        public string Text { get; set; }
+        public string QuestionText { get; set; }
         public string Answer { get; set; }
         public bool IsAnswered { get; set; }
 
-        public Question(string text, string answer)
+        public Question(string questionText, string answer)
         {
-            Text = text;
+            QuestionText = questionText;
             Answer = answer;
             IsAnswered = false;
         }
@@ -34,5 +28,5 @@ namespace QuizGame
             return IsAnswered;
         }
     }
-
 }
+
