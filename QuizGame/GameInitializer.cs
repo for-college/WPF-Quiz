@@ -1,13 +1,14 @@
-﻿using System;
+﻿using System.Windows.Media.Imaging;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using System;
 
 namespace QuizGame
 {
     public class GameInitializer
     {
-        private MainWindow mainWindow;
-        
+        public MainWindow mainWindow;
+        private int iconCount = 1; // The selected icon count, default value 1
+
         QuizData quizData = new QuizData();
 
         public GameInitializer(MainWindow mainWindow)
@@ -21,12 +22,13 @@ namespace QuizGame
             Model model = InitializeModel();
 
             View view = new View(mainWindow);
-            Controller controller = new Controller(model, wordImageMap, view);
+
+            // Отобразите первый вопрос
+            Controller controller = new Controller(model, wordImageMap, view, iconCount);
 
             mainWindow.controller = controller;
             mainWindow.view = view;
 
-            // Отобразите первый вопрос
             controller.DisplayCurrentQuestion();
         }
 
@@ -45,7 +47,7 @@ namespace QuizGame
             WordImageMap wordImageMap = new WordImageMap();
 
             string[] sentencesImages = quizData.SentencesImages;
-            
+
             foreach (string imageName in sentencesImages)
             {
                 // Сплитим до по точке и берём первый элемент (для словаря)

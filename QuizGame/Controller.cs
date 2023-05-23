@@ -9,12 +9,14 @@ namespace QuizGame
         private readonly Model model;
         private readonly WordImageMap wordImageMap;
         private readonly View view;
+        private int iconCount; // The selected icon count
 
-        public Controller(Model model, WordImageMap wordImageMap, View view)
+        public Controller(Model model, WordImageMap wordImageMap, View view, int iconCount)
         {
             this.model = model;
             this.wordImageMap = wordImageMap;
             this.view = view;
+            this.iconCount = iconCount;
         }
 
         public void AddQuestion(string questionText, string answer)
@@ -33,7 +35,9 @@ namespace QuizGame
                 {
                     currentQuestion.QuestionText
                 };
-                wordImageMap.ReplaceWordsWithImages(sentences, view.QuestionTextBlock);
+
+                // Pass the iconCount to ReplaceWordsWithImages method
+                wordImageMap.ReplaceWordsWithImages(sentences, view.QuestionTextBlock, iconCount);
             }
             else
             {
@@ -67,6 +71,12 @@ namespace QuizGame
                 DisplayCurrentQuestion();
             }
         }
+
+        public void UpdateIconCount(int count)
+        {
+            iconCount = count;
+        }
+
 
         private void CalculateResult()
         {

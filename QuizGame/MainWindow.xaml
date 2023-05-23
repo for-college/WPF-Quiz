@@ -17,6 +17,12 @@
                 </Style>
             </TextBlock.Resources>
         </TextBlock>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Уровень сложности: " VerticalAlignment="Center"/>
+            <CheckBox x:Name="ThreeIconsCheckBox" Content="3" Checked="DifficultyCheckBox_Checked"/>
+            <CheckBox x:Name="FourIconsCheckBox" Content="4" Checked="DifficultyCheckBox_Checked"/>
+            <CheckBox x:Name="FiveIconsCheckBox" Content="5" Checked="DifficultyCheckBox_Checked"/>
+        </StackPanel>
         <Image x:Name="Image" Grid.Row="0" Margin="10" MaxWidth="100" MaxHeight="100" />
         <TextBox x:Name="AnswerTextBox" Grid.Row="1" Margin="10" Width="200" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         

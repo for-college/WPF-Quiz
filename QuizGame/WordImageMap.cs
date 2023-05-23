@@ -9,7 +9,7 @@ namespace QuizGame
 {
     public class WordImageMap
     {
-        private Dictionary<string, ImageSource> wordImagePairs;
+        private readonly Dictionary<string, ImageSource> wordImagePairs;
 
         public WordImageMap()
         {
@@ -21,17 +21,15 @@ namespace QuizGame
             wordImagePairs[word] = imageSource;
         }
 
-        public void ReplaceWordsWithImages(List<string> sentences, TextBlock textBlock)
+        public void ReplaceWordsWithImages(List<string> sentences, TextBlock textBlock, int iconCount)
         {
             textBlock.Inlines.Clear();
 
+            Random random = new Random(); // Create a new instance of Random
+
             foreach (string sentence in sentences)
             {
-                List<Inline> inlines = ReplaceWordsWithImagesInSentence(sentence);
-
-                // Перемешиваем элементы в inlines
-                Random random = new Random();
-                inlines = inlines.OrderBy(x => random.Next()).ToList();
+                List<Inline> inlines = ReplaceWordsWithImagesInSentence(sentence, iconCount, random);
 
                 // Добавляем элементы в TextBlock.Inlines в перемешанном порядке
                 foreach (Inline inline in inlines)
@@ -43,10 +41,14 @@ namespace QuizGame
             }
         }
 
-        private List<Inline> ReplaceWordsWithImagesInSentence(string sentence)
+        private List<Inline> ReplaceWordsWithImagesInSentence(string sentence, int iconCount, Random random)
         {
             string[] words = sentence.Split(' ');
             List<Inline> inlines = new List<Inline>();
+            int totalLength = 0; // Variable to keep track of the total length of the text with images
+
+            // Перемешиваем элементы в words
+            words = words.OrderBy(x => random.Next()).ToArray();
 
             foreach (string word in words)
             {
@@ -61,15 +63,26 @@ namespace QuizGame
 
                         InlineUIContainer container = new InlineUIContainer(image);
                         inlines.Add(container);
+
+                        // Calculate the total length of the text with images
+                        totalLength += word.Length;
+
+                        // Limit the total length of the text with images
+                        if (totalLength >= sentence.Length - (iconCount - 1))
+                        {
+                            break;
+                        }
                     }
                     else
                     {
                         inlines.Add(new Run(word + " "));
+                        totalLength += word.Length + 1; // Add the length of the word plus the space character
                     }
                 }
                 else
                 {
                     inlines.Add(new Run(word + " "));
+                    totalLength += word.Length + 1; // Add the length of the word plus the space character
                 }
             }
 

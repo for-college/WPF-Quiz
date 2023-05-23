@@ -10,6 +10,7 @@ namespace QuizGame
     {
         public Controller controller;
         public View view;
+        public int iconCount = 1; // Variable to store the selected icon count, default value 1
 
         public MainWindow()
         {
@@ -30,6 +31,30 @@ namespace QuizGame
         {
             Rules rules = new Rules();
             rules.ShowDialog();
+        }
+
+        private void DifficultyCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            if (checkBox != null && checkBox.IsChecked == true)
+            {
+                // Update the iconCount based on the selected CheckBox
+                switch (checkBox.Name)
+                {
+                    case "ThreeIconsCheckBox":
+                        iconCount = 3;
+                        break;
+                    case "FourIconsCheckBox":
+                        iconCount = 4;
+                        break;
+                    case "FiveIconsCheckBox":
+                        iconCount = 5;
+                        break;
+                }
+
+                // Update the iconCount in the controller
+                controller.UpdateIconCount(iconCount);
+            }
         }
     }
 }
