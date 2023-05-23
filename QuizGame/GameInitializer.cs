@@ -1,6 +1,7 @@
 ﻿using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System;
+using System.IO;
 
 namespace QuizGame
 {
@@ -8,7 +9,9 @@ namespace QuizGame
     {
         public MainWindow mainWindow;
 
-        private readonly int iconCount = 3; // The selected icon count, default value 1
+        private readonly int iconCount = 3;
+
+        private readonly string imageDirectoryPath = Path.Combine(Environment.CurrentDirectory, "..", "..", "Images"); // Картинки берём из папки Images, которая в корне проекта
 
         // TODO: Спросить у И.Е. почему визуалка советует readonly и private
         private readonly QuizData quizData = new QuizData();
@@ -34,14 +37,33 @@ namespace QuizGame
             controller.DisplayCurrentQuestion();
         }
 
-        private ImageSource GetImageSource(string imagePath)
+        private ImageSource GetImageSource(string imageName)
         {
-            BitmapImage imageSource = new BitmapImage();
-            imageSource.BeginInit();
-            imageSource.UriSource = new Uri(imagePath, UriKind.Relative);
-            imageSource.EndInit();
+            try
+            {
+                string imagePath = Path.Combine(imageDirectoryPath, imageName);
 
-            return imageSource;
+                if (File.Exists(imagePath))
+                {
+                    BitmapImage imageSource = new BitmapImage();
+                    imageSource.BeginInit();
+                    imageSource.UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute);
+                    imageSource.CacheOption = BitmapCacheOption.OnLoad;
+                    imageSource.EndInit();
+
+                    return imageSource;
+                }
+                else
+                {
+                    Console.WriteLine($"Файл {imagePath} не существует");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка: {ex.Message}");
+                return null;
+            }
         }
 
         private WordImageMap InitializeWordImageMap()
