@@ -1,92 +1,118 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
+using System;
 
-namespace QuizGame
+// Класс для связывания слов с их изображениями
+public class WordImageMap
 {
-    public class WordImageMap
+    private readonly Dictionary<string, ImageSource> wordImagePairs;
+
+    public WordImageMap()
     {
-        private readonly Dictionary<string, ImageSource> wordImagePairs;
+        wordImagePairs = new Dictionary<string, ImageSource>();
+    }
 
-        public WordImageMap()
+    // Добавление новой пары "слово - изображение" в словарь
+    public void AddWordImagePair(string word, ImageSource imageSource)
+    {
+        wordImagePairs[word] = imageSource;
+    }
+
+    // Замена слов на изображения в заданных предложениях и выведение результата в заданный TextBlock 
+    public void ReplaceWordsWithImages(List<string> sentences, TextBlock textBlock, int iconCount)
+    {
+        textBlock.Inlines.Clear(); // Очистка содержимого TextBlock
+
+        Random random = new Random(); // Создание экземпляра класса Random
+
+        foreach (string sentence in sentences)
         {
-            wordImagePairs = new Dictionary<string, ImageSource>();
-        }
+            List<Inline> inlines = ReplaceWordsWithImagesInSentence(sentence, iconCount, random); // Замена слов на изображения в каждом предложении
 
-        public void AddWordImagePair(string word, ImageSource imageSource)
-        {
-            wordImagePairs[word] = imageSource;
-        }
-
-        public void ReplaceWordsWithImages(List<string> sentences, TextBlock textBlock, int iconCount)
-        {
-            textBlock.Inlines.Clear();
-
-            Random random = new Random(); // Create a new instance of Random
-
-            foreach (string sentence in sentences)
+            // Добавляем элементы в TextBlock.Inlines в перемешанном порядке
+            foreach (Inline inline in inlines)
             {
-                List<Inline> inlines = ReplaceWordsWithImagesInSentence(sentence, iconCount, random);
-
-                // Добавляем элементы в TextBlock.Inlines в перемешанном порядке
-                foreach (Inline inline in inlines)
-                {
-                    textBlock.Inlines.Add(inline);
-                }
-
-                textBlock.Inlines.Add(new LineBreak());
+                textBlock.Inlines.Add(inline);
             }
+
+            textBlock.Inlines.Add(new LineBreak()); // Добавление переноса строки после каждого предложения
         }
+    }
 
-        private List<Inline> ReplaceWordsWithImagesInSentence(string sentence, int iconCount, Random random)
+    // Замена слов на изображения в заданном предложении
+    private List<Inline> ReplaceWordsWithImagesInSentence(string sentence, int iconCount, Random random)
+    {
+        string[] words = sentence.Split(' '); // Разбиение предложения на слова
+        List<Inline> inlines = new List<Inline>(); // Список для хранения результатов замены
+        int totalLength = 0; // Переменная для отслеживания общей длины текста с изображениями
+        int imageCount = 0; // Переменная для отслеживания количества изображений в тексте
+
+        // Перемешивание элементов в массиве words
+        words = words.OrderBy(x => random.Next()).ToArray();
+
+        foreach (string word in words)
         {
-            string[] words = sentence.Split(' ');
-            List<Inline> inlines = new List<Inline>();
-            int totalLength = 0; // Variable to keep track of the total length of the text with images
-
-            // Перемешиваем элементы в words
-            words = words.OrderBy(x => random.Next()).ToArray();
-
-            foreach (string word in words)
+            if (word.StartsWith("[") && word.EndsWith("]"))
             {
-                if (word.StartsWith("[") && word.EndsWith("]"))
+                // Удаление "[]" из слова
+                string wordWithoutBrackets = word.Trim('[', ']');
+
+                if (imageCount < iconCount)
                 {
-                    // Удаляем из слова []
-                    string wordWithoutBrackets = word.Trim('[', ']');
                     if (wordImagePairs.TryGetValue(wordWithoutBrackets, out ImageSource imageSource))
                     {
-                        Image image = new Image();
-                        image.Source = imageSource;
+                        // Создание элемента изображения
+                        Image image = new Image
+                        {
+                            Source = imageSource
+                        };
 
+                        // Добавление изображения в список результатов
                         InlineUIContainer container = new InlineUIContainer(image);
                         inlines.Add(container);
 
-                        // Calculate the total length of the text with images
-                        totalLength += word.Length;
-
-                        // Limit the total length of the text with images
-                        if (totalLength >= sentence.Length - (iconCount - 1))
-                        {
-                            break;
-                        }
+                        // Увеличение счетчика изображений
+                        imageCount++;
                     }
                     else
                     {
-                        inlines.Add(new Run(word + " "));
-                        totalLength += word.Length + 1; // Add the length of the word plus the space character
+                        // Если для слова не найдено изображение, добавляем русский перевод как текст
+                        string russianWord = Dictionary.TranslateWord(wordWithoutBrackets);
+                        inlines.Add(new Run(russianWord + " "));
                     }
+
+                    // Вычисление общей длины текста с изображениями
+                    totalLength += wordWithoutBrackets.Length;
                 }
                 else
                 {
-                    inlines.Add(new Run(word + " "));
-                    totalLength += word.Length + 1; // Add the length of the word plus the space character
+                    // Если лимит изображений достигнут, добавляем русский перевод как текст
+                    string russianWord = Dictionary.TranslateWord(wordWithoutBrackets);
+                    inlines.Add(new Run(russianWord + " "));
+
+                    // Вычисление общей длины текста с изображениями
+                    totalLength += russianWord.Length;
+                }
+
+                // Ограничение общей длины текста с изображениями
+                if (totalLength >= sentence.Length - (iconCount - 1))
+                {
+                    break;
                 }
             }
+            else
+            {
+                // Если слово не заключено в квадратные скобки, добавляем его как текст
+                inlines.Add(new Run(word + " "));
 
-            return inlines;
+                // Вычисление общей длины текста с изображениями
+                totalLength += word.Length;
+            }
         }
+
+        return inlines;
     }
 }

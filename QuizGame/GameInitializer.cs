@@ -7,9 +7,11 @@ namespace QuizGame
     public class GameInitializer
     {
         public MainWindow mainWindow;
-        private int iconCount = 1; // The selected icon count, default value 1
 
-        QuizData quizData = new QuizData();
+        private readonly int iconCount = 3; // The selected icon count, default value 1
+
+        // TODO: Спросить у И.Е. почему визуалка советует readonly и private
+        private readonly QuizData quizData = new QuizData();
 
         public GameInitializer(MainWindow mainWindow)
         {
@@ -50,7 +52,7 @@ namespace QuizGame
 
             foreach (string imageName in sentencesImages)
             {
-                // Сплитим до по точке и берём первый элемент (для словаря)
+                // Сплитим по точке и берём первый элемент (для связки с картинкой)
                 string word = imageName.Split('.')[0];
                 wordImageMap.AddWordImagePair(word, GetImageSource(imageName));
             }
