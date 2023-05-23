@@ -59,6 +59,7 @@
     <Compile Include="GameInitializer.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Question.cs" />
+    <Compile Include="QuizData.cs" />
     <Compile Include="Rules.xaml.cs">
       <DependentUpon>Rules.xaml</DependentUpon>
     </Compile>
