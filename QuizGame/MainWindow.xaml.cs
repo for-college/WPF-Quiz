@@ -1,8 +1,5 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace QuizGame
 {
@@ -10,7 +7,8 @@ namespace QuizGame
     {
         public Controller controller;
         public View view;
-        public int iconCount = 1; // Variable to store the selected icon count, default value 1
+
+        public int iconCount = 3;
 
         public MainWindow()
         {
@@ -35,8 +33,7 @@ namespace QuizGame
 
         private void DifficultyCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            CheckBox checkBox = sender as CheckBox;
-            if (checkBox != null && checkBox.IsChecked == true)
+            if (sender is CheckBox checkBox && checkBox.IsChecked == true)
             {
                 // Update the iconCount based on the selected CheckBox
                 switch (checkBox.Name)

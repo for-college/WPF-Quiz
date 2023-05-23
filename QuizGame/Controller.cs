@@ -9,7 +9,8 @@ namespace QuizGame
         private readonly Model model;
         private readonly WordImageMap wordImageMap;
         private readonly View view;
-        private int iconCount; // The selected icon count
+
+        private int iconCount;
 
         public Controller(Model model, WordImageMap wordImageMap, View view, int iconCount)
         {

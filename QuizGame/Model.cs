@@ -4,7 +4,7 @@ namespace QuizGame
 {
     public class Model
     {
-        private List<Question> questions;
+        private readonly List<Question> questions;
         private int currentQuestionIndex;
 
         public Model()
@@ -25,6 +25,7 @@ namespace QuizGame
             {
                 return questions[currentQuestionIndex];
             }
+
             return null;
         }
 
@@ -34,4 +35,3 @@ namespace QuizGame
         }
     }
 }
-
