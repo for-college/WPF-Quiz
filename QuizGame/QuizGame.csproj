@@ -101,6 +101,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Images\QuizGame.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -114,6 +115,34 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="birch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\apple.png" />
+    <Resource Include="Images\basketball.png" />
+    <Resource Include="Images\berries.png" />
+    <Resource Include="Images\birch.png" />
+    <Resource Include="Images\fog.png" />
+    <Resource Include="Images\football.png" />
+    <Resource Include="Images\guys.png" />
+    <Resource Include="Images\hockey.png" />
+    <Resource Include="Images\look.png" />
+    <Resource Include="Images\me.png" />
+    <Resource Include="Images\mushrooms.png" />
+    <Resource Include="Images\my.png" />
+    <Resource Include="Images\pears.png" />
+    <Content Include="Images\QuizGame.exe" />
+    <Content Include="Images\QuizGame.pdb" />
+    <Resource Include="Images\rain.png" />
+    <Resource Include="Images\rainbow.png" />
+    <Resource Include="Images\river.png" />
+    <Resource Include="Images\running.png" />
+    <Resource Include="Images\stop.png" />
+    <Resource Include="Images\swimming.png" />
+    <Resource Include="Images\under.png" />
+    <Resource Include="Images\us.png" />
+    <Resource Include="Images\volleyball.png" />
+    <Resource Include="Images\wait.png" />
+    <Resource Include="Images\window.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
