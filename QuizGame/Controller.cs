@@ -8,9 +8,9 @@ namespace QuizGame
     {
         private readonly Model model;
         private readonly WordImageMap wordImageMap;
-        private readonly MainWindow view;
+        private readonly View view;
 
-        public Controller(Model model, WordImageMap wordImageMap, MainWindow view)
+        public Controller(Model model, WordImageMap wordImageMap, View view)
         {
             this.model = model;
             this.wordImageMap = wordImageMap;
@@ -27,7 +27,7 @@ namespace QuizGame
             Question currentQuestion = model.GetCurrentQuestion();
             if (currentQuestion != null)
             {
-                view.QuestionTextBlock.Text = string.Empty;
+                view.SetQuestionText(string.Empty);
 
                 List<string> sentences = new List<string>
                 {
@@ -38,7 +38,7 @@ namespace QuizGame
             else
             {
                 // TODO: Доделать логику
-                view.QuestionTextBlock.Text = "Вопросов не осталось";
+                view.SetQuestionText("Вопросов не осталось");
                 CalculateResult();
             }
         }
@@ -74,4 +74,3 @@ namespace QuizGame
         }
     }
 }
-

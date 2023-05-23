@@ -61,6 +61,7 @@
     <Compile Include="Rules.xaml.cs">
       <DependentUpon>Rules.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View.cs" />
     <Compile Include="WordImageMap.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

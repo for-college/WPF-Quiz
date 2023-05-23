@@ -9,6 +9,7 @@ namespace QuizGame
     public partial class MainWindow : Window
     {
         private Controller controller;
+        private View view;
 
         public MainWindow()
         {
@@ -40,8 +41,8 @@ namespace QuizGame
 
             string[] sentencesImages = { 
                 // 1
-                "me.png", 
-                "birch.png", 
+                "me.png",
+                "birch.png",
                 "under.png",
                 "window.png",
                 // 2
@@ -68,7 +69,7 @@ namespace QuizGame
                 "us.png",
                 // 7
                 "apple.png",
-                "pears.png", 
+                "pears.png",
             };
             foreach (string imageName in sentencesImages)
             {
@@ -79,7 +80,8 @@ namespace QuizGame
 
             // Создать контроллер с передачей wordImageMap
             Model model = new Model();
-            controller = new Controller(model, wordImageMap, this);
+            view = new View(this);
+            controller = new Controller(model, wordImageMap, view);
         }
 
         private void InitializeQuestions()
