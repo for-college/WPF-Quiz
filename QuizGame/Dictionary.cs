@@ -15,6 +15,7 @@ internal static class Dictionary
         { "swimming", "купаются" },
         { "river", "речке" },
         { "me", "я" },
+        { "my", "моим" },
         { "mushrooms", "грибами" },
         { "berries", "ягодами" },
         { "football", "футбол" },
