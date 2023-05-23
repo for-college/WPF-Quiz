@@ -52,6 +52,7 @@ namespace QuizGame
             {
                 if (word.StartsWith("[") && word.EndsWith("]"))
                 {
+                    // Удаляем из слова []
                     string wordWithoutBrackets = word.Trim('[', ']');
                     if (wordImagePairs.TryGetValue(wordWithoutBrackets, out ImageSource imageSource))
                     {
