@@ -5,29 +5,29 @@ namespace QuizGame
 {
     public partial class MainWindow : Window
     {
-        public Controller controller;
-        public View view;
+        public Controller controller; // Контроллер игры
+        public View view; // Представление игры
 
-        public int iconCount = 3;
+        public int iconCount = 3; // Количество иконок по умолчанию
 
         public MainWindow()
         {
             InitializeComponent();
 
-            GameInitializer gameInitializer = new GameInitializer(this);
+            GameInitializer gameInitializer = new GameInitializer(this); // Инициализация игры
             gameInitializer.Initialize();
         }
 
         private void SubmitAnswerButton_Click(object sender, RoutedEventArgs e)
         {
             string answer = AnswerTextBox.Text;
-            controller.CheckAnswer(answer);
+            controller.CheckAnswer(answer); // Проверка ответа
             AnswerTextBox.Text = string.Empty; // Очистить поле ввода ответа
         }
 
         private void ShowRules(object sender, RoutedEventArgs e)
         {
-            Rules rules = new Rules();
+            Rules rules = new Rules(); // Создание окна с правилами игры
             rules.ShowDialog();
         }
 
@@ -35,7 +35,7 @@ namespace QuizGame
         {
             if (sender is CheckBox checkBox && checkBox.IsChecked == true)
             {
-                // Update the iconCount based on the selected CheckBox
+                // Обновление значения iconCount в зависимости от выбранного CheckBox
                 switch (checkBox.Name)
                 {
                     case "ThreeIconsCheckBox":
@@ -49,7 +49,7 @@ namespace QuizGame
                         break;
                 }
 
-                // Update the iconCount in the controller
+                // Обновление значения iconCount в контроллере
                 controller.UpdateIconCount(iconCount);
             }
         }
