@@ -4,51 +4,51 @@ namespace QuizGame
 {
     public class Model
     {
-        private readonly List<Question> questions;
-        private int currentQuestionIndex;
+        private readonly List<Question> questions; // Список вопросов
+        private int currentQuestionIndex; // Индекс текущего вопроса
 
         public Model()
         {
-            questions = new List<Question>();
-            currentQuestionIndex = 0;
+            questions = new List<Question>(); // Инициализация списка вопросов
+            currentQuestionIndex = 0; // Установка начального индекса текущего вопроса
         }
 
         public void AddQuestion(string questionText, string answer)
         {
-            Question question = new Question(questionText, answer);
-            questions.Add(question);
+            Question question = new Question(questionText, answer); // Создание нового вопроса
+            questions.Add(question); // Добавление вопроса в список
         }
 
         public Question GetCurrentQuestion()
         {
-            if (currentQuestionIndex < questions.Count)
+            if (currentQuestionIndex < questions.Count) // Проверка, не превышен ли индекс текущего вопроса
             {
-                return questions[currentQuestionIndex];
+                return questions[currentQuestionIndex]; // Возвращаем текущий вопрос
             }
 
-            return null;
+            return null; // Если индекс выходит за пределы списка вопросов, возвращаем null
         }
 
         public void MoveToNextQuestion()
         {
-            currentQuestionIndex++;
+            currentQuestionIndex++; // Переходим к следующему вопросу, увеличивая индекс
         }
 
         public int GetQuestionCount()
         {
-            return questions.Count;
+            return questions.Count; // Возвращаем количество вопросов в списке
         }
 
         public List<string> GetAllAnswers()
         {
-            List<string> answers = new List<string>();
+            List<string> answers = new List<string>(); // Создаем список для ответов
 
             foreach (Question question in questions)
             {
-                answers.Add(question.Answer);
+                answers.Add(question.Answer); // Добавляем ответы из каждого вопроса в список
             }
 
-            return answers;
+            return answers; // Возвращаем список ответов
         }
     }
 }
