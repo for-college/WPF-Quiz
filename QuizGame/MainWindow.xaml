@@ -5,6 +5,7 @@
     <Grid Margin="30,30,30,30">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50px"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -17,18 +18,19 @@
                 </Style>
             </TextBlock.Resources>
         </TextBlock>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
-            <TextBlock Text="Уровень сложности: " VerticalAlignment="Center"/>
-            <CheckBox x:Name="ThreeIconsCheckBox" Content="3" Checked="DifficultyCheckBox_Checked"/>
-            <CheckBox x:Name="FourIconsCheckBox" Content="4" Checked="DifficultyCheckBox_Checked"/>
-            <CheckBox x:Name="FiveIconsCheckBox" Content="5" Checked="DifficultyCheckBox_Checked"/>
+        <TextBlock Grid.Row="1" Text="Уровень сложности: " VerticalAlignment="Top"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10" VerticalAlignment="Bottom">
+            <CheckBox x:Name="ThreeIconsCheckBox" Content="Легкий" Checked="DifficultyCheckBox_Checked" Margin="5,5,5,5"/>
+            <CheckBox x:Name="FourIconsCheckBox" Content="Средний" Checked="DifficultyCheckBox_Checked" Margin="5,5,5,5"/>
+            <CheckBox x:Name="FiveIconsCheckBox" Content="Сложный" Checked="DifficultyCheckBox_Checked" Margin="5,5,5,5"/>
         </StackPanel>
-        <Image x:Name="Image" Grid.Row="0" Margin="10" MaxWidth="100" MaxHeight="100" />
-        <TextBox x:Name="AnswerTextBox" Grid.Row="1" Margin="10" Width="200" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Image x:Name="Image" Grid.Row="1" Margin="10" MaxWidth="100" MaxHeight="100" />
         
-        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" Click="ShowRules" Cursor="Help" Padding="10,10,10,10" Background="#00DDDEDD" BorderBrush="#FF6BFF0A">Правила</Button>
-        <Button x:Name="SubmitAnswerButton" Grid.Row="1" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right" Click="SubmitAnswerButton_Click" Padding="10,10,10,10" Background="#00DDDEDD" BorderBrush="#FF6BFF0A" Content="Отправить" />
+        <TextBox x:Name="AnswerTextBox"  Grid.Row="2" Margin="10" Width="200" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF6BFF0A"/>
+        
+        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" Click="ShowRules" Cursor="Help" Padding="10,10,10,10" Background="#00DDDEDD" BorderBrush="#FF6BFF0A">Правила</Button>
+        <Button x:Name="SubmitAnswerButton" Grid.Row="2" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right" Click="SubmitAnswerButton_Click" Padding="10,10,10,10" Background="#00DDDEDD" BorderBrush="#FF6BFF0A" Content="Отправить" />
 
-        <TextBlock x:Name="ResultTextBlock" Grid.Row="2" Margin="10" FontSize="18" TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed"/>
+        <TextBlock x:Name="ResultTextBlock" Grid.Row="3" Margin="10" FontSize="18" TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed"/>
     </Grid>
 </Window>
