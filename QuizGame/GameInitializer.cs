@@ -1,7 +1,7 @@
-﻿using System.Windows.Media.Imaging;
-using System.Windows.Media;
-using System;
+﻿using System;
 using System.IO;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace QuizGame
 {
@@ -39,10 +39,11 @@ namespace QuizGame
 
         private ImageSource GetImageSource(string imageName)
         {
+            // Обработка ошибки, чтобы приложение не крашилось
             try
             {
                 string imagePath = Path.Combine(imageDirectoryPath, imageName);
-
+                // Если картинка существует, то создаём путь до неё и возвращаем его
                 if (File.Exists(imagePath))
                 {
                     BitmapImage imageSource = new BitmapImage();
@@ -76,6 +77,7 @@ namespace QuizGame
             {
                 // Сплитим по точке и берём первый элемент (для связки с картинкой)
                 string word = imageName.Split('.')[0];
+                // Добавляем пару слово - имя картинки
                 wordImageMap.AddWordImagePair(word, GetImageSource(imageName));
             }
 
