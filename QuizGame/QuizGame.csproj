@@ -115,6 +115,11 @@
     <Resource Include="birch.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\recently.png" />
+    <Resource Include="Images\sky.png" />
+    <Resource Include="Images\you.png" />
+    <Resource Include="Images\wonderful.png" />
+    <Resource Include="Images\your.png" />
     <Resource Include="Images\apple.png" />
     <Resource Include="Images\basketball.png" />
     <Resource Include="Images\berries.png" />
@@ -128,6 +133,16 @@
     <Resource Include="Images\mushrooms.png" />
     <Resource Include="Images\my.png" />
     <Resource Include="Images\pears.png" />
+    <Resource Include="Images\baby.png" />
+    <Resource Include="Images\blood.png" />
+    <Resource Include="Images\fire.png" />
+    <Resource Include="Images\he.png" />
+    <Resource Include="Images\hnd.png" />
+    <Resource Include="Images\criminal.png" />
+    <Resource Include="Images\father.png" />
+    <Resource Include="Images\hero.png" />
+    <Resource Include="Images\around.png" />
+    <Resource Include="Images\fitted.png" />
     <Content Include="Images\QuizGame.exe" />
     <Content Include="Images\QuizGame.pdb" />
     <Resource Include="Images\rain.png" />

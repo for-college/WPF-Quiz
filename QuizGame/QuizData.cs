@@ -4,54 +4,73 @@
     {
         public string[] Questions { get; } = {
             "Белая [birch] [under] [my] [window]",
-            "[guys] [swimming] в [river]",
-            "Завтра утром [me] пойду в лес за [mushrooms] и [berries]",
+            "Завтра утром [me] пойду в лес за [mushrooms] , [berries] и [chamomile]",
             "Гена перечислил известные виды спорта: [football] , [basketball] , [volleyball] , [hockey] , [running]",
             "После [rain] дети [wait] [rainbow] , но [rain] не собирался [stop]",
             "[us] [look] овраг лишь тогда, когда рассеялся [fog]",
+            "[you] [sky] [recently] [around] [fitted]",
+            "[wonderful] [your] [father] , [criminal] и [hero]",
+            "Тебя, [baby] , [he] ласкал. На [fire] груди [hnd] [blood]",
         };
 
         public string[] Answers { get; } = {
             "Белая береза под моим окном",
-            "Мальчики купаются в речке",
-            "Завтра утром я пойду в лес за грибами и ягодами",
+            "Завтра утром я пойду в лес за грибами, ягодами и ромашкой",
             "Гена перечислил известные виды спорта: футбол, баскетбол, волейбол, хоккей, бег",
             "Мы увидели овраг лишь тогда, когда рассеялся туман",
-            "После дождя дети ждали радугу, но дождь не собирался останавливаться"
+            "После дождя дети ждали радугу, но дождь не собирался останавливаться",
+            "Ты небо недавно кругом облегала",
+            "Чудесный твой отец, преступник и герой",
+            "Тебя, младенца, он ласкал. На пламенной груди рукой окрававленной",
         };
 
         public string[] SentencesImages { get; } = {
             // 1
-            "me.png",
             "my.png",
             "birch.png",
             "under.png",
             "window.png",
             // 2
-            "guys.png",
-            "river.png",
-            "swimming.png",
-            // 3
+            "me.png",
             "berries.png",
             "mushrooms.png",
-            // 4
+            "chamomile.png",
+            // 3
             "basketball.png",
             "football.png",
             "hockey.png",
             "running.png",
             "volleyball.png",
-            // 5
+            // 4
             "rain.png",
             "rainbow.png",
             "stop.png",
             "wait.png",
-            // 6
+            // 5
             "fog.png",
             "look.png",
             "us.png",
-            // 7
+            // 6
             "apple.png",
             "pears.png",
+            // 7
+            "fitted.png",
+            "recently.png",
+            "around.png",
+            "sky.png",
+            "you.png",
+            // 8
+            "criminal.png",
+            "father.png",
+            "wonderful.png",
+            "hero.png",
+            "your.png",
+            // 9
+            "baby.png",
+            "blood.png",
+            "fire.png",
+            "he.png",
+            "hnd.png",
         };
     }
 }
