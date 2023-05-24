@@ -9,6 +9,7 @@ namespace QuizGame
         private readonly Model model;
         private readonly WordImageMap wordImageMap;
         private readonly View view;
+        public readonly GameStats gameStats;
 
         private int iconCount;
 
@@ -18,6 +19,11 @@ namespace QuizGame
             this.wordImageMap = wordImageMap;
             this.view = view;
             this.iconCount = iconCount;
+
+            gameStats = new GameStats
+            {
+                TotalQuestions = model.GetQuestionCount()
+            };
         }
 
         public void AddQuestion(string questionText, string answer)
@@ -37,14 +43,12 @@ namespace QuizGame
                     currentQuestion.QuestionText
                 };
 
-                // Pass the iconCount to ReplaceWordsWithImages method
+                // Заменяем слово на картинку
                 wordImageMap.ReplaceWordsWithImages(sentences, view.QuestionTextBlock, iconCount);
             }
             else
             {
-                // TODO: Доделать логику
-                view.SetQuestionText("Вопросов не осталось");
-                CalculateResult();
+                OpenEndGameWindow();
             }
         }
 
@@ -60,13 +64,7 @@ namespace QuizGame
             {
                 if (answer.Equals(currentQuestion.Answer, StringComparison.OrdinalIgnoreCase))
                 {
-                    // TODO: потом это убрать
-                    MessageBox.Show("Верный ответ");
-                }
-                else
-                {
-                    // TODO: потом это убрать
-                    MessageBox.Show("Плохой ответ");
+                    gameStats.UpdateCorrectAnswers();
                 }
                 MoveToNextQuestion();
                 DisplayCurrentQuestion();
@@ -78,10 +76,31 @@ namespace QuizGame
             iconCount = count;
         }
 
-
-        private void CalculateResult()
+        public void OpenEndGameWindow()
         {
-            // TODO: Расчет итогового результата
+            (int correctAnswers, double percentCorrect) = CalculateResult();
+
+            bool isWin = percentCorrect >= 50 ? true : false;
+
+            // Создаем окно с итогами
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = isWin ? MessageBoxImage.Information : MessageBoxImage.Error;
+
+            MessageBox.Show($"Количество правильных ответов: {correctAnswers}\nПроцент правильных ответов: {percentCorrect:0.00}", $"{(isWin ? "Победа" : "Поражение")}", button, icon);
+
+            // Закрываем текущее окно игры
+            Application.Current.Shutdown();
+        }
+
+        public (int, double) CalculateResult()
+        {
+            // Подсчитываем количество правильных ответов
+            int correctAnswers = gameStats.CorrectAnswers;
+
+            // Вычисляем процент правильных ответов
+            double percentCorrect = (double)correctAnswers / gameStats.TotalQuestions * 100;
+
+            return (correctAnswers, percentCorrect);
         }
     }
 }

@@ -33,5 +33,22 @@ namespace QuizGame
         {
             currentQuestionIndex++;
         }
+
+        public int GetQuestionCount()
+        {
+            return questions.Count;
+        }
+
+        public List<string> GetAllAnswers()
+        {
+            List<string> answers = new List<string>();
+
+            foreach (Question question in questions)
+            {
+                answers.Add(question.Answer);
+            }
+
+            return answers;
+        }
     }
 }
