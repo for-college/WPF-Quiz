@@ -1,17 +1,17 @@
 ﻿<Window x:Class="QuizGame.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Игра Пиктограммы | Главное меню" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Игра Пиктограммы | Главное меню" Height="500" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Margin="30,30,30,30">
         <Grid.RowDefinitions>
             <!-- Определение строки с автоматической высотой для отображения текстового блока вопроса -->
-            <RowDefinition Height="Auto"/>
-            <!-- Определение строки с фиксированной высотой для отображения уровня сложности -->
-            <RowDefinition Height="50px"/>
-            <!-- Определение строки с динамической высотой для отображения изображения и текстового поля ответа -->
             <RowDefinition Height="*"/>
+            <!-- Определение строки с фиксированной высотой для отображения уровня сложности -->
+            <RowDefinition Height="50"/>
+            <!-- Определение строки с динамической высотой для отображения изображения и текстового поля ответа -->
+            <RowDefinition Height="50"/>
             <!-- Определение строки с автоматической высотой для отображения результата -->
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         
         <!-- Текстовый блок для отображения времени обратного отсчета -->

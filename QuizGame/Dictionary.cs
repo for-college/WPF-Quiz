@@ -38,6 +38,7 @@ internal static class Dictionary
         { "criminal", "преступник" },
         { "baby", "младенец" },
         { "he", "он" },
+        { "hero", "герой" },
         { "fire", "пламенной" },
         { "blood", "окрававленной" },
         { "hnd", "рукой" },
