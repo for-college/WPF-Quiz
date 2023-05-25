@@ -43,12 +43,11 @@
                    Text="Чтобы увидеть правила, нажмите на кнопочку 'Вперёд'"
                    VerticalAlignment="Center"
                    TextAlignment="Center"
-                   HorizontalAlignment="Left" Height="100" Width="400" TextWrapping="Wrap" FontWeight="Medium" Margin="200,0,0,0" FontSize="18">
-        </TextBlock>
+                   HorizontalAlignment="Center" Height="100" Width="400" TextWrapping="Wrap" FontWeight="Medium" FontSize="18"/>
         <Button Grid.Row="3" Grid.ColumnSpan="2" Margin="400 0 0 0" Content="Вперёд" Width="100" Height="40" Click="NextRule" x:Name="ruleButtonNext" HorizontalAlignment="Center" Background="#03DDDDDD" BorderBrush="#00707070" FontSize="16" />
 
         <Button Grid.Row="3" Grid.ColumnSpan="2" Margin="0 0 400 0" Content="Назад" Width="100" Height="40" Click="PrevRule" x:Name="ruleButtonBefore" HorizontalAlignment="Center" Background="#00DDDDDD" BorderBrush="#00707070" FontSize="16" />
 
-        <Button Grid.Column="1" Content="Закрыть" Width="100" Height="40" Click="CloseWindow" x:Name="closeButton" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Red" Foreground="Red" Margin="0,0,0,10" FontSize="16" />
+        <Button Grid.Column="1" Content="Закрыть" Width="100" Height="40" Click="CloseWindow" x:Name="closeButton" HorizontalAlignment="Right" Background="Red" BorderBrush="Red" Foreground="White" FontSize="16" />
     </Grid>
 </Window>
