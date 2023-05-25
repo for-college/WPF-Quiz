@@ -38,17 +38,5 @@ namespace QuizGame
         {
             return questions.Count; // Возвращаем количество вопросов в списке
         }
-
-        public List<string> GetAllAnswers()
-        {
-            List<string> answers = new List<string>(); // Создаем список для ответов
-
-            foreach (Question question in questions)
-            {
-                answers.Add(question.Answer); // Добавляем ответы из каждого вопроса в список
-            }
-
-            return answers; // Возвращаем список ответов
-        }
     }
 }
