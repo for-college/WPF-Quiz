@@ -111,22 +111,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\read.png" />
+    <Resource Include="Images\sun.png" />
+    <Resource Include="Images\watch.png" />
     <Resource Include="Images\recently.png" />
     <Resource Include="Images\sky.png" />
     <Resource Include="Images\you.png" />
     <Resource Include="Images\wonderful.png" />
     <Resource Include="Images\your.png" />
-    <Resource Include="Images\apple.png" />
-    <Resource Include="Images\basketball.png" />
-    <Resource Include="Images\berries.png" />
-    <Resource Include="Images\birch.png" />
-    <Resource Include="Images\fog.png" />
-    <Resource Include="Images\football.png" />
     <Resource Include="Images\guys.png" />
-    <Resource Include="Images\hockey.png" />
     <Resource Include="Images\look.png" />
     <Resource Include="Images\me.png" />
-    <Resource Include="Images\mushrooms.png" />
     <Resource Include="Images\my.png" />
     <Resource Include="Images\pears.png" />
     <Resource Include="Images\baby.png" />
@@ -138,18 +133,17 @@
     <Resource Include="Images\father.png" />
     <Resource Include="Images\hero.png" />
     <Resource Include="Images\around.png" />
-    <Resource Include="Images\fitted.png" />
-    <Content Include="Images\QuizGame.exe" />
-    <Content Include="Images\QuizGame.pdb" />
-    <Resource Include="Images\rain.png" />
+    <Resource Include="Images\cat.png" />
+    <Resource Include="Images\chain.png" />
+    <Resource Include="Images\day.png" />
+    <Resource Include="Images\freedom.png" />
+    <Resource Include="Images\freezing.png" />
+    <Resource Include="Images\friend.png" />
+    <Resource Include="Images\night.png" />
+    <Resource Include="Images\nounchain.png" />
     <Resource Include="Images\rainbow.png" />
-    <Resource Include="Images\river.png" />
-    <Resource Include="Images\running.png" />
-    <Resource Include="Images\stop.png" />
-    <Resource Include="Images\swimming.png" />
     <Resource Include="Images\under.png" />
     <Resource Include="Images\us.png" />
-    <Resource Include="Images\volleyball.png" />
     <Resource Include="Images\wait.png" />
     <Resource Include="Images\window.png" />
   </ItemGroup>
