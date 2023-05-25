@@ -31,6 +31,11 @@ namespace QuizGame
             rules.ShowDialog();
         }
 
+        public void OpenEndGameWindow()
+        {
+            controller.OpenEndGameWindow();
+        }
+
         private void DifficultyCheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (sender is CheckBox checkBox && checkBox.IsChecked == true)

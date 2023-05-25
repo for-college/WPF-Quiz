@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -61,6 +61,7 @@
     <Compile Include="Model.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="QuizData.cs" />
+    <Compile Include="GameStats.cs" />
     <Compile Include="Rules.xaml.cs">
       <DependentUpon>Rules.xaml</DependentUpon>
     </Compile>
@@ -113,6 +114,11 @@
     <Resource Include="birch.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\recently.png" />
+    <Resource Include="Images\sky.png" />
+    <Resource Include="Images\you.png" />
+    <Resource Include="Images\wonderful.png" />
+    <Resource Include="Images\your.png" />
     <Resource Include="Images\apple.png" />
     <Resource Include="Images\basketball.png" />
     <Resource Include="Images\berries.png" />
@@ -126,6 +132,18 @@
     <Resource Include="Images\mushrooms.png" />
     <Resource Include="Images\my.png" />
     <Resource Include="Images\pears.png" />
+    <Resource Include="Images\baby.png" />
+    <Resource Include="Images\blood.png" />
+    <Resource Include="Images\fire.png" />
+    <Resource Include="Images\he.png" />
+    <Resource Include="Images\hnd.png" />
+    <Resource Include="Images\criminal.png" />
+    <Resource Include="Images\father.png" />
+    <Resource Include="Images\hero.png" />
+    <Resource Include="Images\around.png" />
+    <Resource Include="Images\fitted.png" />
+    <Content Include="Images\QuizGame.exe" />
+    <Content Include="Images\QuizGame.pdb" />
     <Resource Include="Images\rain.png" />
     <Resource Include="Images\rainbow.png" />
     <Resource Include="Images\river.png" />

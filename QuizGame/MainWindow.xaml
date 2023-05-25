@@ -4,31 +4,54 @@
         Title="Игра Пиктограммы | Главное меню" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Margin="30,30,30,30">
         <Grid.RowDefinitions>
+            <!-- Определение строки с автоматической высотой для отображения текстового блока вопроса -->
             <RowDefinition Height="Auto"/>
+            <!-- Определение строки с фиксированной высотой для отображения уровня сложности -->
+            <RowDefinition Height="50px"/>
+            <!-- Определение строки с динамической высотой для отображения изображения и текстового поля ответа -->
             <RowDefinition Height="*"/>
+            <!-- Определение строки с автоматической высотой для отображения результата -->
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Текстовый блок для отображения вопроса с настройками стиля для изображений -->
         <TextBlock x:Name="QuestionTextBlock" Grid.Row="0" Margin="10" FontSize="20" TextWrapping="Wrap" TextAlignment="Center">
             <TextBlock.Resources>
+                <!-- Установка максимальной ширины изображений -->
                 <Style TargetType="Image">
                     <Setter Property="MaxWidth" Value="100"/>
+                    <!-- Установка максимальной высоты изображений -->
                     <Setter Property="MaxHeight" Value="100"/>
                 </Style>
             </TextBlock.Resources>
         </TextBlock>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
-            <TextBlock Text="Уровень сложности: " VerticalAlignment="Center"/>
-            <CheckBox x:Name="ThreeIconsCheckBox" Content="3" Checked="DifficultyCheckBox_Checked"/>
-            <CheckBox x:Name="FourIconsCheckBox" Content="4" Checked="DifficultyCheckBox_Checked"/>
-            <CheckBox x:Name="FiveIconsCheckBox" Content="5" Checked="DifficultyCheckBox_Checked"/>
-        </StackPanel>
-        <Image x:Name="Image" Grid.Row="0" Margin="10" MaxWidth="100" MaxHeight="100" />
-        <TextBox x:Name="AnswerTextBox" Grid.Row="1" Margin="10" Width="200" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        
-        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="1" Click="ShowRules" Cursor="Help" Padding="10,10,10,10" Background="#00DDDEDD" BorderBrush="#FF6BFF0A">Правила</Button>
-        <Button x:Name="SubmitAnswerButton" Grid.Row="1" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right" Click="SubmitAnswerButton_Click" Padding="10,10,10,10" Background="#00DDDEDD" BorderBrush="#FF6BFF0A" Content="Отправить" />
 
-        <TextBlock x:Name="ResultTextBlock" Grid.Row="2" Margin="10" FontSize="18" TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed"/>
+        <!-- Текстовый блок с описанием уровня сложности -->
+        <TextBlock Grid.Row="1" Text="Уровень сложности: " VerticalAlignment="Top"/>
+
+        <!-- Панель с флажками для выбора уровня сложности -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10" VerticalAlignment="Bottom">
+            <!-- Флажок для выбора легкого уровня сложности -->
+            <CheckBox x:Name="ThreeIconsCheckBox" Content="Легкий" Checked="DifficultyCheckBox_Checked" Margin="5,5,5,5"/>
+            <!-- Флажок для выбора среднего уровня сложности -->
+            <CheckBox x:Name="FourIconsCheckBox" Content="Средний" Checked="DifficultyCheckBox_Checked" Margin="5,5,5,5"/>
+            <!-- Флажок для выбора сложного уровня сложности -->
+            <CheckBox x:Name="FiveIconsCheckBox" Content="Сложный" Checked="DifficultyCheckBox_Checked" Margin="5,5,5,5"/>
+        </StackPanel>
+
+        <!-- Изображение -->
+        <Image x:Name="Image" Grid.Row="1" Margin="10" MaxWidth="100" MaxHeight="100" />
+
+        <!-- Текстовое поле для ввода ответа -->
+        <TextBox x:Name="AnswerTextBox"  Grid.Row="2" Margin="10" Width="200" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF6BFF0A"/>
+
+        <!-- Кнопка для отображения правил игры -->
+        <Button HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" Click="ShowRules" Cursor="Help" Padding="10,10,10,10" Background="#00DDDEDD" BorderBrush="#FF6BFF0A">Правила</Button>
+
+        <!-- Кнопка для отправки ответа -->
+        <Button x:Name="SubmitAnswerButton" Grid.Row="2" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right" Click="SubmitAnswerButton_Click" Padding="10,10,10,10" Background="#00DDDEDD" BorderBrush="#FF6BFF0A" Content="Отправить" />
+
+        <!-- Текстовый блок для отображения результата (скрыт по умолчанию) -->
+        <TextBlock x:Name="ResultTextBlock" Grid.Row="3" Margin="10" FontSize="18" TextWrapping="Wrap" TextAlignment="Center" Visibility="Collapsed"/>
     </Grid>
 </Window>

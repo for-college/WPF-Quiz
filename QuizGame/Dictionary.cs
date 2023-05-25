@@ -26,7 +26,21 @@ internal static class Dictionary
         { "us", "мы" },
         { "look", "увидели" },
         { "fog", "туман" },
-        { "rainbow", "радугу" }
+        { "rainbow", "радугу" },
+        { "you", "ты" },
+        { "sky", "небо" },
+        { "recently", "недавно" },
+        { "around", "вокруг" },
+        { "fitted", "облегала" },
+        { "wonderful", "чудесный" },
+        { "your", "твой" },
+        { "father", "отец" },
+        { "criminal", "преступник" },
+        { "baby", "младенец" },
+        { "he", "он" },
+        { "fire", "пламенной" },
+        { "blood", "окрававленной" },
+        { "hnd", "рукой" },
 };
     // С помощью TryGetValue находим пару и переводим
     public static string TranslateWord(string englishWord)

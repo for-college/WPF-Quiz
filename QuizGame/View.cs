@@ -5,38 +5,38 @@ namespace QuizGame
 {
     public class View
     {
-        private readonly MainWindow mainWindow;
+        public MainWindow MainWindow { get; } // Главное окно представления
 
         public View(MainWindow mainWindow)
         {
-            this.mainWindow = mainWindow;
+            MainWindow = mainWindow; // Установка главного окна представления
         }
 
-        public TextBlock QuestionTextBlock => mainWindow.QuestionTextBlock;
+        public TextBlock QuestionTextBlock => MainWindow.QuestionTextBlock; // Текстовый блок для отображения вопроса
 
         public string GetAnswer()
         {
-            return mainWindow.AnswerTextBox.Text;
+            return MainWindow.AnswerTextBox.Text; // Получение ответа из текстового поля
         }
 
         public void ClearAnswer()
         {
-            mainWindow.AnswerTextBox.Clear();
+            MainWindow.AnswerTextBox.Clear(); // Очистка текстового поля с ответом
         }
 
         public void SetQuestionText(string text)
         {
-            mainWindow.Dispatcher.Invoke(() =>
+            MainWindow.Dispatcher.Invoke(() =>
             {
-                mainWindow.QuestionTextBlock.Text = text;
+                MainWindow.QuestionTextBlock.Text = text; // Установка текста вопроса в текстовый блок
             });
         }
 
         public void SetImageSource(ImageSource source)
         {
-            mainWindow.Dispatcher.Invoke(() =>
+            MainWindow.Dispatcher.Invoke(() =>
             {
-                mainWindow.Image.Source = source;
+                MainWindow.Image.Source = source; // Установка источника изображения
             });
         }
     }
