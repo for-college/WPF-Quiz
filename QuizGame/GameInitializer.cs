@@ -27,7 +27,6 @@ namespace QuizGame
 
             View view = new View(mainWindow);
 
-            // Отобразите первый вопрос
             Controller controller = new Controller(model, wordImageMap, view, iconCount);
 
             mainWindow.controller = controller;

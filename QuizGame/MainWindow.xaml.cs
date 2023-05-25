@@ -58,17 +58,12 @@ namespace QuizGame
             }
         }
 
+        // Ловим вводимые символы
         private void AnswerTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             string allowedCharsPattern = "^[а-яА-Я,]*$";
             Regex regex = new Regex(allowedCharsPattern);
-            if (!regex.IsMatch(e.Text))
-            {
-                e.Handled = true; // Запретить ввод символа
-            }
-
-            // Проверка на подряд идущие заглавные буквы
-            if (Regex.IsMatch(AnswerTextBox.Text + e.Text, "[A-Z]{2,}"))
+            if (!regex.IsMatch(e.Text) || Regex.IsMatch(AnswerTextBox.Text + e.Text, "[A-Z]{2,}"))
             {
                 e.Handled = true; // Запретить ввод символа
             }
