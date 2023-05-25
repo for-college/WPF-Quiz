@@ -30,6 +30,12 @@ namespace QuizGame
             {
                 TotalQuestions = model.GetQuestionCount() // Устанавливаем общее количество вопросов в статистику
             };
+
+            countdownTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            countdownTimer.Tick += CountdownTimer_Tick;
         }
 
         public void DisplayCurrentQuestion()
@@ -48,11 +54,6 @@ namespace QuizGame
                 if (isFirstQuestionAnswered)
                 {
                     countdownTime = GetCountdownTime();
-                    countdownTimer = new DispatcherTimer
-                    {
-                        Interval = TimeSpan.FromSeconds(1)
-                    };
-                    countdownTimer.Tick += CountdownTimer_Tick;
                     countdownTimer.Start();
                 }
             }
@@ -80,34 +81,6 @@ namespace QuizGame
         public void MoveToNextQuestion()
         {
             model.MoveToNextQuestion(); // Переходим к следующему вопросу в модели
-            // countdownTime = GetCountdownTime();
-        }
-
-        public void CheckAnswer(string answer)
-        {
-            Question currentQuestion = model.GetCurrentQuestion();
-
-            if (currentQuestion != null)
-            {
-                if (!isFirstQuestionAnswered)
-                {
-                    isFirstQuestionAnswered = true;
-                    countdownTime = GetCountdownTime();
-                    countdownTimer = new DispatcherTimer
-                    {
-                        Interval = TimeSpan.FromSeconds(1)
-                    };
-                    countdownTimer.Tick += CountdownTimer_Tick;
-                    countdownTimer.Start();
-                }
-
-                if (answer.Equals(currentQuestion.Answer, StringComparison.OrdinalIgnoreCase))
-                {
-                    gameStats.UpdateCorrectAnswers();
-                }
-                MoveToNextQuestion();
-                DisplayCurrentQuestion();
-            }
         }
 
         public void UpdateIconCount(int count)
@@ -140,6 +113,28 @@ namespace QuizGame
             double percentCorrect = (double)correctAnswers / gameStats.TotalQuestions * 100;
 
             return (correctAnswers, percentCorrect); // Возвращаем результаты
+        }
+
+        public void CheckAnswer(string answer)
+        {
+            Question currentQuestion = model.GetCurrentQuestion();
+
+            if (currentQuestion != null)
+            {
+                if (!isFirstQuestionAnswered)
+                {
+                    isFirstQuestionAnswered = true;
+                    countdownTime = GetCountdownTime();
+                    countdownTimer.Start();
+                }
+
+                if (answer.Equals(currentQuestion.Answer, StringComparison.OrdinalIgnoreCase))
+                {
+                    gameStats.UpdateCorrectAnswers();
+                }
+                MoveToNextQuestion();
+                DisplayCurrentQuestion();
+            }
         }
 
         private void CountdownTimer_Tick(object sender, EventArgs e)
