@@ -41,7 +41,7 @@ internal static class Dictionary
         { "fire", "пламенной" },
         { "blood", "окрававленной" },
         { "hnd", "рукой" },
-};
+    };
     // С помощью TryGetValue находим пару и переводим
     public static string TranslateWord(string englishWord)
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace QuizGame
 {
@@ -9,9 +10,12 @@ namespace QuizGame
         private readonly Model model; // Модель игры
         private readonly WordImageMap wordImageMap; // Карта соответствия слов и изображений
         private readonly View view; // Представление
+        
         public readonly GameStats gameStats; // Статистика игры
 
         private int iconCount; // Количество иконок
+        private TimeSpan countdownTime;
+        private DispatcherTimer countdownTimer;
 
         public Controller(Model model, WordImageMap wordImageMap, View view, int iconCount)
         {
@@ -34,6 +38,13 @@ namespace QuizGame
         public void DisplayCurrentQuestion()
         {
             Question currentQuestion = model.GetCurrentQuestion(); // Получаем текущий вопрос из модели
+            countdownTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            countdownTimer.Tick += CountdownTimer_Tick;
+            countdownTimer.Start();
+
             if (currentQuestion != null)
             {
                 view.SetQuestionText(string.Empty); // Очищаем текст вопроса на представлении
@@ -55,6 +66,18 @@ namespace QuizGame
         public void MoveToNextQuestion()
         {
             model.MoveToNextQuestion(); // Переходим к следующему вопросу в модели
+            switch (iconCount)
+            {
+                case 3:
+                    countdownTime = TimeSpan.FromMinutes(3);
+                    break;
+                case 4:
+                    countdownTime = TimeSpan.FromMinutes(4);
+                    break;
+                case 5:
+                    countdownTime = TimeSpan.FromMinutes(5);
+                    break;
+            }
         }
 
         public void CheckAnswer(string answer)
@@ -80,7 +103,7 @@ namespace QuizGame
         {
             (int correctAnswers, double percentCorrect) = CalculateResult(); // Вычисляем результаты игры
 
-            bool isWin = percentCorrect >= 50 ? true : false; // Определяем, выиграл ли игрок
+            bool isWin = percentCorrect >= 50; // Определяем, выиграл ли игрок
 
             // Создаем окно с итогами игры
             MessageBoxButton button = MessageBoxButton.OK;
@@ -101,6 +124,18 @@ namespace QuizGame
             double percentCorrect = (double)correctAnswers / gameStats.TotalQuestions * 100;
 
             return (correctAnswers, percentCorrect); // Возвращаем результаты
+        }
+
+        private void CountdownTimer_Tick(object sender, EventArgs e)
+        {
+            countdownTime = countdownTime.Subtract(TimeSpan.FromSeconds(1));
+            view.SetCountdownText(countdownTime.ToString(@"mm\:ss"));
+
+            if (countdownTime.TotalSeconds <= 0)
+            {
+                countdownTimer.Stop();
+                // Время вышло, выполните необходимые действия
+            }
         }
     }
 }

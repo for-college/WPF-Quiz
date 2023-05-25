@@ -13,7 +13,10 @@
             <!-- Определение строки с автоматической высотой для отображения результата -->
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
+        
+        <!-- Текстовый блок для отображения времени обратного отсчета -->
+        <TextBlock x:Name="CountdownTextBlock" Grid.Row="4" Margin="10" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        
         <!-- Текстовый блок для отображения вопроса с настройками стиля для изображений -->
         <TextBlock x:Name="QuestionTextBlock" Grid.Row="0" Margin="10" FontSize="20" TextWrapping="Wrap" TextAlignment="Center">
             <TextBlock.Resources>

@@ -39,5 +39,13 @@ namespace QuizGame
                 MainWindow.Image.Source = source; // Установка источника изображения
             });
         }
+
+        public void SetCountdownText(string text)
+        {
+            MainWindow.Dispatcher.Invoke(() =>
+            {
+                MainWindow.CountdownTextBlock.Text = text; // Установка текста времени обратного отсчета в текстовый блок
+            });
+        }
     }
 }

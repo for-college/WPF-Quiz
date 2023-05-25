@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace QuizGame
 {
@@ -29,11 +30,6 @@ namespace QuizGame
         {
             Rules rules = new Rules(); // Создание окна с правилами игры
             rules.ShowDialog();
-        }
-
-        public void OpenEndGameWindow()
-        {
-            controller.OpenEndGameWindow();
         }
 
         private void DifficultyCheckBox_Checked(object sender, RoutedEventArgs e)
