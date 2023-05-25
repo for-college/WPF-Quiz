@@ -34,34 +34,31 @@ namespace QuizGame
 
         public void DisplayCurrentQuestion()
         {
-            Question currentQuestion = model.GetCurrentQuestion(); // Получаем текущий вопрос из модели
+            Question currentQuestion = model.GetCurrentQuestion();
 
             if (currentQuestion != null)
             {
-                view.SetQuestionText(string.Empty); // Очищаем текст вопроса на представлении
-
+                view.SetQuestionText(string.Empty);
                 List<string> sentences = new List<string>
                 {
                     currentQuestion.QuestionText
                 };
-
-                // Заменяем слово на картинку с использованием карты соответствия
                 wordImageMap.ReplaceWordsWithImages(sentences, view.QuestionTextBlock, iconCount);
 
-                if (!isFirstQuestionAnswered)
+                if (isFirstQuestionAnswered)
                 {
-                    countdownTime = GetCountdownTime(); // Получаем время отсчета в зависимости от количества иконок
+                    countdownTime = GetCountdownTime();
                     countdownTimer = new DispatcherTimer
                     {
                         Interval = TimeSpan.FromSeconds(1)
                     };
                     countdownTimer.Tick += CountdownTimer_Tick;
-                    countdownTimer.Start(); // Запуск таймера только если ответ на первый вопрос не был дан
+                    countdownTimer.Start();
                 }
             }
             else
             {
-                OpenEndGameWindow(); // Если вопросы закончились, открываем окно с результатами игры
+                OpenEndGameWindow();
             }
         }
 
@@ -83,38 +80,33 @@ namespace QuizGame
         public void MoveToNextQuestion()
         {
             model.MoveToNextQuestion(); // Переходим к следующему вопросу в модели
-            switch (iconCount)
-            {
-                case 3:
-                    countdownTime = TimeSpan.FromMinutes(3);
-                    break;
-                case 4:
-                    countdownTime = TimeSpan.FromMinutes(4);
-                    break;
-                case 5:
-                    countdownTime = TimeSpan.FromMinutes(5);
-                    break;
-            }
+            // countdownTime = GetCountdownTime();
         }
 
         public void CheckAnswer(string answer)
         {
-            if (!isFirstQuestionAnswered)
-            {
-                isFirstQuestionAnswered = true;
-                countdownTimer.Start(); // Запуск таймера только после ответа на первый вопрос
-            }
-
-            Question currentQuestion = model.GetCurrentQuestion(); // Получаем текущий вопрос из модели
+            Question currentQuestion = model.GetCurrentQuestion();
 
             if (currentQuestion != null)
             {
-                if (answer.Equals(currentQuestion.Answer, StringComparison.OrdinalIgnoreCase)) // Проверяем ответ игрока
+                if (!isFirstQuestionAnswered)
                 {
-                    gameStats.UpdateCorrectAnswers(); // Обновляем статистику правильных ответов
+                    isFirstQuestionAnswered = true;
+                    countdownTime = GetCountdownTime();
+                    countdownTimer = new DispatcherTimer
+                    {
+                        Interval = TimeSpan.FromSeconds(1)
+                    };
+                    countdownTimer.Tick += CountdownTimer_Tick;
+                    countdownTimer.Start();
                 }
-                MoveToNextQuestion(); // Переходим к следующему вопросу
-                DisplayCurrentQuestion(); // Отображаем текущий вопрос
+
+                if (answer.Equals(currentQuestion.Answer, StringComparison.OrdinalIgnoreCase))
+                {
+                    gameStats.UpdateCorrectAnswers();
+                }
+                MoveToNextQuestion();
+                DisplayCurrentQuestion();
             }
         }
 
@@ -157,7 +149,6 @@ namespace QuizGame
 
             if (countdownTime.TotalSeconds <= 0)
             {
-                countdownTimer.Stop();
                 TimeIsUp(); // Вызываем метод, когда время вышло
             }
         }
@@ -166,6 +157,7 @@ namespace QuizGame
         {
             MessageBox.Show("Время вышло!", "Игра окончена", MessageBoxButton.OK, MessageBoxImage.Information);
             Application.Current.Shutdown();
+            countdownTimer.Stop();
         }
     }
 }

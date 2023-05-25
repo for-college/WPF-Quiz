@@ -13,7 +13,6 @@ namespace QuizGame
 
         private readonly string imageDirectoryPath = Path.Combine(Environment.CurrentDirectory, "..", "..", "Images"); // Картинки берём из папки Images, которая в корне проекта
 
-        // TODO: Спросить у И.Е. почему визуалка советует readonly и private
         private readonly QuizData quizData = new QuizData();
 
         public GameInitializer(MainWindow mainWindow)
