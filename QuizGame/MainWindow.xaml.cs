@@ -31,26 +31,26 @@ namespace QuizGame
             rules.ShowDialog();
         }
 
-        private void DifficultyCheckBox_Checked(object sender, RoutedEventArgs e)
+        private void DifficultyRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (sender is CheckBox checkBox && checkBox.IsChecked == true)
+            if (sender is RadioButton radioButton && radioButton.IsChecked == true)
             {
-                // Обновление значения iconCount в зависимости от выбранного CheckBox
-                switch (checkBox.Name)
+                // Обновление значения iconCount в зависимости от выбранной радиокнопки
+                switch (radioButton.Name)
                 {
-                    case "ThreeIconsCheckBox":
+                    case "ThreeIconsRadioButton":
                         iconCount = 3;
                         break;
-                    case "FourIconsCheckBox":
+                    case "FourIconsRadioButton":
                         iconCount = 4;
                         break;
-                    case "FiveIconsCheckBox":
+                    case "FiveIconsRadioButton":
                         iconCount = 5;
                         break;
                 }
 
                 // Обновление значения iconCount в контроллере
-                controller.UpdateIconCount(iconCount);
+                controller?.UpdateIconCount(iconCount);
             }
         }
     }

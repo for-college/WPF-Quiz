@@ -27,13 +27,13 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border Background="White" CornerRadius="20" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2" Width="500" Panel.ZIndex="-1" Padding="20,20,20,24" Margin="0,0,1,0" Height="117"></Border>
+        <Border Background="White" CornerRadius="20" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2" Width="500" Panel.ZIndex="-1" Padding="20,20,20,24" Margin="0,0,1,0" Height="200"></Border>
         <TextBlock Grid.ColumnSpan="2" 
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
@@ -43,12 +43,12 @@
                    Text="Чтобы увидеть правила, нажмите на кнопочку 'Вперёд'"
                    VerticalAlignment="Center"
                    TextAlignment="Center"
-                   HorizontalAlignment="Center" Height="40" Width="400" TextWrapping="Wrap" FontWeight="Medium" Margin="4,0,0,0">
+                   HorizontalAlignment="Left" Height="100" Width="400" TextWrapping="Wrap" FontWeight="Medium" Margin="200,0,0,0" FontSize="18">
         </TextBlock>
-        <Button Grid.Row="3" Grid.ColumnSpan="2" Margin="400 0 0 0" Content="Вперёд" Width="70" Height="20" Click="NextRule" x:Name="ruleButtonNext" HorizontalAlignment="Center" Background="#03DDDDDD" BorderBrush="#00707070" />
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Margin="400 0 0 0" Content="Вперёд" Width="100" Height="40" Click="NextRule" x:Name="ruleButtonNext" HorizontalAlignment="Center" Background="#03DDDDDD" BorderBrush="#00707070" FontSize="16" />
 
-        <Button Grid.Row="3" Grid.ColumnSpan="2" Margin="0 0 400 0" Content="Назад" Width="70" Height="20" Click="PrevRule" x:Name="ruleButtonBefore" HorizontalAlignment="Center" Background="#00DDDDDD" BorderBrush="#00707070" />
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Margin="0 0 400 0" Content="Назад" Width="100" Height="40" Click="PrevRule" x:Name="ruleButtonBefore" HorizontalAlignment="Center" Background="#00DDDDDD" BorderBrush="#00707070" FontSize="16" />
 
-        <Button Grid.Column="1" Content="Закрыть" Width="70" Height="20" Click="CloseWindow" x:Name="closeButton" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Red" Foreground="Red" Margin="0,0,0,10" />
+        <Button Grid.Column="1" Content="Закрыть" Width="100" Height="40" Click="CloseWindow" x:Name="closeButton" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Red" Foreground="Red" Margin="0,0,0,10" FontSize="16" />
     </Grid>
 </Window>

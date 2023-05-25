@@ -7,16 +7,16 @@
             <!-- Определение строки с автоматической высотой для отображения текстового блока вопроса -->
             <RowDefinition Height="*"/>
             <!-- Определение строки с фиксированной высотой для отображения уровня сложности -->
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
             <!-- Определение строки с динамической высотой для отображения изображения и текстового поля ответа -->
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
             <!-- Определение строки с автоматической высотой для отображения результата -->
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        
+
         <!-- Текстовый блок для отображения времени обратного отсчета -->
         <TextBlock x:Name="CountdownTextBlock" Grid.Row="4" Margin="10" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        
+
         <!-- Текстовый блок для отображения вопроса с настройками стиля для изображений -->
         <TextBlock x:Name="QuestionTextBlock" Grid.Row="0" Margin="10" FontSize="20" TextWrapping="Wrap" TextAlignment="Center">
             <TextBlock.Resources>
@@ -30,22 +30,23 @@
         </TextBlock>
 
         <!-- Текстовый блок с описанием уровня сложности -->
-        <TextBlock Grid.Row="1" Text="Уровень сложности: " VerticalAlignment="Top"/>
+        <TextBlock Grid.Row="1" Text="Уровень сложности: " VerticalAlignment="Top" FontSize="22" HorizontalAlignment="Center"/>
 
         <!-- Панель с флажками для выбора уровня сложности -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10" VerticalAlignment="Bottom">
-            <!-- Флажок для выбора легкого уровня сложности -->
-            <CheckBox x:Name="ThreeIconsCheckBox" Content="Легкий" Checked="DifficultyCheckBox_Checked" Margin="5,5,5,5"/>
-            <!-- Флажок для выбора среднего уровня сложности -->
-            <CheckBox x:Name="FourIconsCheckBox" Content="Средний" Checked="DifficultyCheckBox_Checked" Margin="5,5,5,5"/>
-            <!-- Флажок для выбора сложного уровня сложности -->
-            <CheckBox x:Name="FiveIconsCheckBox" Content="Сложный" Checked="DifficultyCheckBox_Checked" Margin="5,5,5,5"/>
+            <!-- Радиокнопка для выбора легкого уровня сложности -->
+            <RadioButton x:Name="ThreeIconsRadioButton" Content="Легкий" Margin="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Top" IsChecked="True" Checked="DifficultyRadioButton_Checked" FontSize="18"/>
+            <!-- Радиокнопка для выбора среднего уровня сложности -->
+            <RadioButton x:Name="FourIconsRadioButton" Content="Средний" Margin="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Top" Checked="DifficultyRadioButton_Checked" FontSize="18"/>
+            <!-- Радиокнопка для выбора сложного уровня сложности -->
+            <RadioButton x:Name="FiveIconsRadioButton" Content="Сложный" Margin="5,5,5,5" HorizontalAlignment="Center" VerticalAlignment="Top" Checked="DifficultyRadioButton_Checked" FontSize="18"/>
         </StackPanel>
 
         <!-- Изображение -->
-        <Image x:Name="Image" Grid.Row="1" Margin="10" MaxWidth="100" MaxHeight="100" />
+        <Image x:Name="Image" Grid.Row="1" Margin="10" MaxWidth="100" MaxHeight="100" HorizontalAlignment="Center" VerticalAlignment="Top" />
 
         <!-- Текстовое поле для ввода ответа -->
+        <TextBlock Grid.Row="2" HorizontalAlignment="Center">Введите ответ</TextBlock>
         <TextBox x:Name="AnswerTextBox"  Grid.Row="2" Margin="10" Width="200" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF6BFF0A"/>
 
         <!-- Кнопка для отображения правил игры -->
