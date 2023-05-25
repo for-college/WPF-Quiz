@@ -10,7 +10,7 @@ namespace QuizGame
         private readonly Model model; // Модель игры
         private readonly WordImageMap wordImageMap; // Карта соответствия слов и изображений
         private readonly View view; // Представление
-        
+
         public readonly GameStats gameStats; // Статистика игры
 
         private int iconCount; // Количество иконок
